@@ -17,12 +17,15 @@ from django.contrib import admin
 from django.conf.urls import include, url
 from rest_framework import routers
 from persons.views import PersonViewSet
+from pets.views import PetViewSet, Mascotas
 
 # Routers provide a way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'persons', PersonViewSet)
+router.register(r'pets', PetViewSet)
 
 
 urlpatterns = [
-    url(r'^', include(router.urls))
+    url(r'^', include(router.urls)),
+    url(r'^mascotas/$',Mascotas.as_view())
 ]
